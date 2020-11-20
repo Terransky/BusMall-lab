@@ -1,0 +1,59 @@
+
+
+body {
+  background-color: lightblue;
+  
+}
+
+h1 {
+  text-align: center;
+  font-size: 3em;
+  margin: 50px 0 25px 0px;
+}
+
+section {
+  border: solid blue;
+  width: 960px;
+  margin: auto;
+}
+
+img {
+  width: 300px;
+  height: 300px;
+  margin-left: 15px;
+}
+
+div {
+  text-align: center;
+  width: 300px;
+  font-size: 2em;
+  margin: 25px auto 25px auto;
+  background-color: oldlace;
+}
+
+main div:last-child{
+  text-align: center;
+  width: 300px;
+  font-size: 2em;
+  margin: 25px auto 25px auto;
+  background-color: red;
+}
+
+main section:last-child { /*why won't this work? */
+  border: solid green;
+  margin: auto;
+}
+
+div:hover {
+  background-color: burlywood;
+  cursor: pointer;
+}
+
+ul { 
+  text-align: center;
+}
+
+#chart {
+  width: 900px;
+  height: 600px;
+}
