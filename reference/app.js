@@ -90,7 +90,7 @@ renderProducts();
 
 
 // event handler
-function handleClick(event)
+//function handleClick(event)
 
 
 // event listener

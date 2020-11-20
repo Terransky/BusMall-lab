@@ -29,7 +29,7 @@ function Goat(name, src) {
   this.name = name;
   this.src = `images/${name}.jpg`;
   this.views = 0;
-  this.vites = 0;
+  this.votes = 0;
   goats.push(this);
 }
 
