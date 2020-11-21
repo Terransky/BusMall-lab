@@ -95,3 +95,7 @@ renderProducts();
 
 // event listener
 myContainer.addEventListener('click', handleClick);
+
+
+// Chart.js
+
