@@ -5,8 +5,8 @@
 
 var productNames = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'];
 
-var views = [];
-var votes = [];
+var votes = new Array(20).fill(0);
+var views = new Array(20).fill(0);
 
 var allProducts = [];
 var renderQueue = [];
@@ -27,6 +27,7 @@ function Product(name) {
   this.src = `img/${name}.jpg`;
   this.votes = 0;
   this.views = 0;
+  
   allProducts.push(this);
 }
 
@@ -49,11 +50,11 @@ function getRandomIndex(arr){
 
 // populate the render queue
 function populateRenderQueue(arr){
-  // uses constructor to 
-  while (arr.length > 0){
+  // gets called in renderProducts and populates the renderQueue
+  while (arr.length > 3){
     arr.shift();
   }
-  while (arr.length < 3){
+  while (arr.length < 6){
     var item = getRandomIndex(allProducts);
     while (arr.includes(item)){ 
       item = getRandomIndex(allProducts);
@@ -67,6 +68,7 @@ function populateImages(element, product){
   element.src = allProducts[product].src;
   element.alt = allProducts[product].name;
   allProducts[product].views++;
+  views[product] = allProducts[product].views;
 }
 
 // render products
@@ -111,6 +113,7 @@ function handleClick(event){
     // looks at all the name properties inside the products array and compares them to img alt property
     if (clickedProduct === allProducts[i].name){
       allProducts[i].votes++;
+      votes[i] = allProducts[i].votes;
       // if true we have the correct product object and can increment its votes
     }
   }
@@ -126,6 +129,7 @@ function handleClick(event){
 function handleResults(event){
   if (clicks === maxClicks){
     renderResults();
+    var myChart = new Chart(ctx, chartObject);
   }
   else {
     window.alert("Please finish voting first");
@@ -137,3 +141,86 @@ function handleResults(event){
 // event listener
 myContainer.addEventListener('click', handleClick);
 results.addEventListener('click', handleResults);
+
+
+// chart
+var ctx = document.getElementById('myChart').getContext('2d');
+
+    // The type of chart we want to create
+var chartObject = {
+  type: 'bar',
+  data: {
+    labels: productNames,
+    datasets: [{
+      label: '# of Votes',
+      hoverBackgroundColor: 'rgba(255, 99, 132, 0.2)',
+      data: votes,
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(255, 99, 132, 0.2)',
+      ],
+     
+      borderWidth: 1
+    },
+    {
+      label: '# of Views',
+      hoverBackgroundColor: 'rgba(54, 162, 235, 0.2)',
+      data: views,
+      backgroundColor: [
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        
+      ],
+      
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+  }
+};
+
+
+
