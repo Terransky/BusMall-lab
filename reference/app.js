@@ -87,6 +87,19 @@ renderProducts();
 // render results in chart
 
 
+//local storage experiment
+
+var storedNumber = 42;
+localStorage.setItem('thisIsMyNumber', storedNumber);
+
+var noResults = allProducts;
+localStorage.setItem('goat', noResults);
+
+var stringifiedProducts = JSON.stringify(noResults);
+localStorage.setItem('resultsStringified', stringifiedResults);
+var retrievedProducts = localStorage.getItem('resultsStringified');
+var parsedResults = JSON.parse(retrievedProducts);
+
 
 
 // event handler
