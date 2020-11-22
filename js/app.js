@@ -5,10 +5,12 @@
 
 var productNames = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'];
 
+
+var allProducts = [];
+
 var votes = new Array(20).fill(0);
 var views = new Array(20).fill(0);
 
-var allProducts = [];
 var renderQueue = [];
 var clicks = [];
 var maxClicks = 25;
@@ -84,7 +86,17 @@ function renderProducts(){
 
 }
 
+var retrievedResults = localStorage.getItem('results');
+var parsedRetrievedResults = JSON.parse(retrievedResults);
+
+if (retrievedResults){ 
+  allProducts = parsedRetrievedResults;
+}
+else{
 instantiateProducts(productNames);
+}
+
+
 renderProducts();
 // render results in list
 
@@ -100,8 +112,6 @@ function renderResults(){
   }
 
 }
-
-
 
 
 // event handler
@@ -130,12 +140,20 @@ function handleResults(event){
   if (clicks === maxClicks){
     renderResults();
     var myChart = new Chart(ctx, chartObject);
+    var stringifiedResults = JSON.stringify(allProducts);
+    localStorage.setItem('results', stringifiedResults);
   }
   else {
     window.alert("Please finish voting first");
   }
   
 }
+
+
+//local storage
+
+
+
 
 
 // event listener
