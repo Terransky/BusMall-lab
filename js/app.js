@@ -108,7 +108,7 @@ function renderResults(){
     // create element, give content, append to DOM
     var li = document.createElement('li');
     li.textContent = `${allProducts[i].name} had ${allProducts[i].votes} votes and was seen ${allProducts[i].views} times.`;
-    myList.appendChild(li);
+    // myList.appendChild(li); // Don't need this any more but leaving for posterity for now
   }
 
 }
@@ -142,6 +142,8 @@ function handleResults(event){
     var myChart = new Chart(ctx, chartObject);
     var stringifiedResults = JSON.stringify(allProducts);
     localStorage.setItem('results', stringifiedResults);
+    document.getElementById("results").style.visibility = "hidden";
+    document.getElementById("canvas").style.visibility = "visible";    
   }
   else {
     window.alert("Please finish voting first");
@@ -163,7 +165,7 @@ results.addEventListener('click', handleResults);
 
 // chart
 var ctx = document.getElementById('myChart').getContext('2d');
-
+document.getElementById("canvas").style.visibility = "hidden"; 
     // The type of chart we want to create
 var chartObject = {
   type: 'bar',

@@ -1,18 +1,33 @@
 
 
 body {
-  background-color: lightblue;
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/2/22/Hobart_buses_%285929879281%29.jpg");
+    background-size: 100%;
+}
+
+
+h1 {
+  color: white;
+  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+  text-align: center;
+  font-size: 4em;
+  margin: 50px 0 25px 0px;
+  align-items: center;
   
 }
 
-h1 {
+h2 {
+  color: white;
+  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
   text-align: center;
   font-size: 3em;
   margin: 50px 0 25px 0px;
+  align-items: center;
+  
 }
 
 section {
-  border: solid blue;
+  
   width: 960px;
   margin: auto;
 }
